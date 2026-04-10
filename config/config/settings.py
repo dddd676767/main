@@ -41,6 +41,22 @@ INSTALLED_APPS = [
     'dimensions',
     'items',
     'versions',
+    'chest_loots',
+    'completed_tutorials',
+    'favorites',
+    'loot_drops',
+    'mechanic_materials',
+    'mechanic_steps',
+    'mechanics',
+    'mobs',
+    'mob_spawns',
+    'recipe_ingredients',
+    'recipes',
+    'search_history',
+    'structure_chests',
+    'structures',
+    'user_profiles',
+
 ]
 
 MIDDLEWARE = [
