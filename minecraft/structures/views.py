@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import Structure
+from .serializers import StructureSerializer
 
-# Create your views here.
+class StructureViewSet(viewsets.ModelViewSet):
+    queryset = Structure.objects.all()
+    serializer_class = StructureSerializer

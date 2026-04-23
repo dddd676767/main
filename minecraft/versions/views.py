@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import MinecraftVersion
+from .serializers import MinecraftVersionSerializer
 
-# Create your views here.
+class MinecraftVersionViewSet(viewsets.ModelViewSet):
+    queryset = MinecraftVersion.objects.all()
+    serializer_class = MinecraftVersionSerializer
+    search_fields = ['version_number']

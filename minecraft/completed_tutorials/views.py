@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import CompletedTutorial
+from .serializers import CompletedTutorialSerializer
 
-# Create your views here.
+class CompletedTutorialViewSet(viewsets.ModelViewSet):
+    queryset = CompletedTutorial.objects.all()
+    serializer_class = CompletedTutorialSerializer
+    filterset_fields = ['user', 'mechanic']
