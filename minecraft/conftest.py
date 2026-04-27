@@ -1,6 +1,14 @@
+import os
+import sys
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+
+import django
+django.setup()
+
 import pytest
-from django.contrib.auth import get_user_model
 from rest_framework.test import APIClient
+from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
@@ -26,38 +34,70 @@ def admin_client(api_client, admin_user):
 def test_version():
     from versions.models import MinecraftVersion
     from datetime import date
-    return MinecraftVersion.objects.create(
+    version, created = MinecraftVersion.objects.get_or_create(
         version_number="1.21",
-        release_date=date(2024, 6, 13),
-        is_latest=True
+        defaults={
+            'release_date': date(2024, 6, 13),
+            'is_latest': True
+        }
     )
+    return version
+
+@pytest.fixture
+def test_dimension():
+    from dimensions.models import Dimension
+    dimension, created = Dimension.objects.get_or_create(
+        name="Overworld",
+        defaults={'name_ru': "Верхний мир"}
+    )
+    return dimension
 
 @pytest.fixture
 def test_item(test_version):
     from items.models import Item
-    item = Item.objects.create(
+    item, created = Item.objects.get_or_create(
         item_id="minecraft:oak_planks",
-        name="Дубовые доски",
-        name_en="Oak Planks",
-        category="block",
-        stack_size=64,
-        rarity="common"
+        defaults={
+            'name': "Дубовые доски",
+            'name_en': "Oak Planks",
+            'category': "block",
+            'stack_size': 64,
+            'rarity': "common"
+        }
     )
-    item.versions.add(test_version)
+    if created:
+        item.versions.add(test_version)
     return item
 
 @pytest.fixture
-def test_mob(test_version):
+def test_mob(test_version, test_dimension):
     from mobs.models import Mob
-    mob = Mob.objects.create(
-        mob_id="minecraft:zombie",
-        name="Zombie",
-        health=20.0,
-        damage=3.0,
-        behavior="hostile",
-        category="monster",
-        experience=5,
-        description="Враждебный моб"
+    from biomes.models import Biome
+    
+    biome, _ = Biome.objects.get_or_create(
+        name="Plains",
+        defaults={
+            'name_ru': "Равнины",
+            'dimension': test_dimension,
+            'temperature': 0.8
+        }
     )
-    mob.versions.add(test_version)
+    
+    mob, created = Mob.objects.get_or_create(
+        mob_id="minecraft:zombie",
+        defaults={
+            'name': "Zombie",
+            'name_en': "Zombie",
+            'health': 20.0,
+            'damage': 3.0,
+            'behavior': "hostile",
+            'category': "monster",
+            'experience': 5,
+            'description': "Враждебный моб"
+        }
+    )
+    if created:
+        mob.versions.add(test_version)
+        mob.spawns_in.add(test_dimension)
+        mob.biomes.add(biome)
     return mob
