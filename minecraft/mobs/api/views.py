@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from rest_framework.filters import SearchFilter
-from .models import Mob
+from ..models import Mob
 from .serializers import MobSerializer
 
 class MobViewSet(viewsets.ModelViewSet):
@@ -15,3 +15,8 @@ class MobViewSet(viewsets.ModelViewSet):
         if version:
             queryset = queryset.filter(versions__version_number=version)
         return queryset
+    
+
+"""
+Валидация входящих данных, вызов метода сервиса  сериализация результатов
+"""

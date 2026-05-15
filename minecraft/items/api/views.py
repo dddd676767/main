@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from rest_framework.filters import SearchFilter
-from .models import Item
+from ..models import Item
 from .serializers import ItemSerializer
 
 class ItemViewSet(viewsets.ModelViewSet):

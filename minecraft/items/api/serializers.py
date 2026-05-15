@@ -1,6 +1,6 @@
 # items/serializers.py
 from rest_framework import serializers
-from .models import Item
+from ..models import Item
 
 class ItemSerializer(serializers.ModelSerializer):
     category_display = serializers.CharField(source='get_category_display', read_only=True)

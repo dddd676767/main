@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import LootDrop
+from ..models import LootDrop
 
 class LootDropSerializer(serializers.ModelSerializer):
     mob_name = serializers.ReadOnlyField(source='mob.name')

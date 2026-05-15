@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import Mob
+from ..models import Mob
 from loot_drops.models import LootDrop
-from loot_drops.serializers import LootDropSerializer
+from minecraft.loot_drops.api.serializers import LootDropSerializer
 
 class MobSerializer(serializers.ModelSerializer):
     behavior_display = serializers.CharField(source='get_behavior_display', read_only=True)

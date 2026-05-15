@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from .models import MobSpawnCondition
+from ..models import MobSpawnCondition
 from .serializers import MobSpawnConditionSerializer
 
 class MobSpawnConditionViewSet(viewsets.ModelViewSet):

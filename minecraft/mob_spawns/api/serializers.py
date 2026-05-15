@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import MobSpawnCondition
+from ..models import MobSpawnCondition
 
 class MobSpawnConditionSerializer(serializers.ModelSerializer):
     mob_name = serializers.ReadOnlyField(source='mob.name')

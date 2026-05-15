@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from .models import Mechanic
+from ..models import Mechanic
 from .serializers import MechanicSerializer
 
 class MechanicViewSet(viewsets.ModelViewSet):

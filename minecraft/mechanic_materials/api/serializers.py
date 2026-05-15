@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import MechanicMaterial
+from ..models import MechanicMaterial
 
 class MechanicMaterialSerializer(serializers.ModelSerializer):
     mechanic_title = serializers.ReadOnlyField(source='mechanic.title')
