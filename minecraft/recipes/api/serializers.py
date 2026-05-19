@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from ..models import Recipe
 from recipe_ingredients.models import RecipeIngredient
-from minecraft.recipe_ingredients.api.serializers import RecipeIngredientSerializer
+from recipe_ingredients.api.serializers import RecipeIngredientSerializer
 
 class RecipeSerializer(serializers.ModelSerializer):
     result_item_name = serializers.ReadOnlyField(source='result_item.name')
