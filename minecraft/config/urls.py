@@ -19,25 +19,25 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from versions.views import MinecraftVersionViewSet
-from dimensions.views import DimensionViewSet
-from biomes.views import BiomeViewSet
+from minecraft.versions.api.views import MinecraftVersionViewSet
+from minecraft.dimensions.api.views import DimensionViewSet
+from minecraft.biomes.api.views import BiomeViewSet
 from minecraft.items.api.views import ItemViewSet
-from recipes.views import RecipeViewSet
-from recipe_ingredients.views import RecipeIngredientViewSet
+from minecraft.recipes.api.views import RecipeViewSet
+from minecraft.recipe_ingredients.api.views import RecipeIngredientViewSet
 from minecraft.mobs.api.views import MobViewSet
 from minecraft.loot_drops.api.views import LootDropViewSet
 from minecraft.mob_spawns.api.views import MobSpawnConditionViewSet
-from structures.views import StructureViewSet
-from structure_chests.views import StructureChestViewSet
-from chest_loots.views import ChestLootItemViewSet
+from minecraft.structures.api.views import StructureViewSet
+from minecraft.structure_chests.api.views import StructureChestViewSet
+from minecraft.chest_loots.api.views import ChestLootItemViewSet
 from minecraft.mechanics.api.views import MechanicViewSet
 from minecraft.mechanic_steps.api.views import MechanicStepViewSet
 from minecraft.mechanic_materials.api.views import MechanicMaterialViewSet
-from user_profiles.views import UserProfileViewSet
+from minecraft.user_profiles.api.views import UserProfileViewSet
 from minecraft.favorites.api.views import FavoriteViewSet
-from search_history.views import SearchHistoryViewSet
-from completed_tutorials.views import CompletedTutorialViewSet
+from minecraft.search_history.api.views import SearchHistoryViewSet
+from minecraft.completed_tutorials.api.views import CompletedTutorialViewSet
 
 router = DefaultRouter()
 router.register(r'versions', MinecraftVersionViewSet)

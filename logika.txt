@@ -1,0 +1,11 @@
+versions -> items -> recipes -> recipe_ingredients
+versions -> mobs -> loot_drops -> mob_spawns -> (biomes -> dimensions, dimensions)
+versions -> structures -> structure_chests -> chest_loots
+
+mechanics -> mechanics_steps
+mechanics -> mechanics_materials
+mechanics -> completed_tutorials
+
+user_profiles -> favorites
+user_profiles -> search_history
+user_profiles -> completed_tutorials

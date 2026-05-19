@@ -1,42 +1,83 @@
-"""
-Вся алгоритмическая логика работа с несколькими моделями расчёты валидация требующая доступ к бд
+# mobs/service.py
+from typing import List, Dict, Optional
+from django.db.models import Q
+from .models import Mob
+from versions.models import MinecraftVersion
+from dimensions.models import Dimension
 
 
-"""
-
-from typing import List,Set
-from django.db.models import Prefetch
-from mob_spawns.models import MobSpawnCondition
-from .models import Mobs
-
-
-class Mob:
-    """
-        Метод класса который не получает автоматически ссылку
-        на экземпляр класса(self) и не получает ссылку на сам класс
-        формально ведёт себя как обычная функция нологически принадлежит
-        самому классу и вызывается через класс или его экземпляр
-    """
-
+class MobService:
+    """Сервис для работы с мобами"""
     
     @staticmethod
-    def get_possible_dishes(category_id:int,product_ids:List[int] -> List[Dish]):   
-
-    # возращаем список блюд заданой категории
-    # для которых все ингридиенты содержатся в пределах product_id
-    #получаем блюдо нужной категории с предварительной загрузкой ингридиентов
-        dishes = Mobs.objects.filter(category_id = category_id).prefetch_related(
-            Prefetch('products',queryset = Product.objects.only('id'))
+    def get_mob_by_id(mob_id: str) -> Optional[Mob]:
+        """Получить моба по ID"""
+        return Mob.objects.filter(mob_id=mob_id).first()
+    
+    @staticmethod
+    def get_mobs_by_behavior(behavior: str, version: str = None) -> List[Mob]:
+        """Получить мобов по поведению"""
+        queryset = Mob.objects.filter(behavior=behavior)
+        
+        if version:
+            version_obj = MinecraftVersion.objects.filter(version_number=version).first()
+            if version_obj:
+                queryset = queryset.filter(versions=version_obj)
+        
+        return list(queryset.order_by('name'))
+    
+    @staticmethod
+    def get_mobs_by_dimension(dimension_name: str, version: str = None) -> List[Mob]:
+        """Получить мобов, спавнящихся в измерении"""
+        dimension = Dimension.objects.filter(name=dimension_name).first()
+        if not dimension:
+            return []
+        
+        queryset = Mob.objects.filter(spawns_in=dimension)
+        
+        if version:
+            version_obj = MinecraftVersion.objects.filter(version_number=version).first()
+            if version_obj:
+                queryset = queryset.filter(versions=version_obj)
+        
+        return list(queryset.order_by('name'))
+    
+    @staticmethod
+    def search_mobs(query: str, version: str = None, limit: int = 20) -> List[Mob]:
+        """Поиск мобов по названию"""
+        queryset = Mob.objects.filter(
+            Q(name__icontains=query) | Q(name_en__icontains=query)
         )
-        product_set = set(product_ids)
-        result = []
-        for dish in dishes:
-            dish_product_set = set(dish.products.value_list('id',flat=True))
-            if dish_product_set.issubclass(product_set):
-                result.append(dish)
-        return result
+        
+        if version:
+            version_obj = MinecraftVersion.objects.filter(version_number=version).first()
+            if version_obj:
+                queryset = queryset.filter(versions=version_obj)
+        
+        return list(queryset[:limit])
     
     @staticmethod
-    # Для формы выбора возращаем все категории с их продуктами
-    def get_product_and_category():
-        return Category.objects.prefetch_relate('products').all()
+    def get_mob_with_details(mob_id: str) -> Dict:
+        """Получить полную информацию о мобе"""
+        mob = Mob.objects.filter(mob_id=mob_id).first()
+        if not mob:
+            return {}
+        
+        return {
+            'id': mob.id,
+            'mob_id': mob.mob_id,
+            'name': mob.name,
+            'name_en': mob.name_en,
+            'health': mob.health,
+            'damage': mob.damage,
+            'behavior': mob.get_behavior_display(),
+            'category': mob.get_category_display(),
+            'experience': mob.experience,
+            'description': mob.description,
+            'image_path': mob.image_path,
+            'icon_path': mob.icon_path,
+            'light_level': mob.light_level,
+            'versions': [v.version_number for v in mob.versions.all()],
+            'spawns_in': [d.name_ru for d in mob.spawns_in.all()],
+            'biomes': [b.name_ru for b in mob.biomes.all()],
+        }
