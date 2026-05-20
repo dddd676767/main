@@ -20,6 +20,32 @@ class ItemService:
         return Item.objects.filter(category=category)
     
     @staticmethod
+    def filter_by_rarity(rarity_id):
+        return Item.objects.filter(rarity=rarity_id)
+    
+    @staticmethod
+    def get_categories():
+        return [
+            {"id": "block", "name": "Блок"},
+            {"id": "tool", "name": "Инструмент"},
+            {"id": "weapon", "name": "Оружие"},
+            {"id": "armor", "name": "Броня"},
+            {"id": "food", "name": "Еда"},
+            {"id": "material", "name": "Материал"},
+            {"id": "redstone", "name": "Редстоун"},
+            {"id": "potion", "name": "Зелье"},
+        ]
+    
+    @staticmethod
+    def get_rarities():
+        return [
+            {"id": "common", "name": "Обычный"},
+            {"id": "uncommon", "name": "Необычный"},
+            {"id": "rare", "name": "Редкий"},
+            {"id": "epic", "name": "Эпический"},
+        ]
+    
+    @staticmethod
     def search(query):
         if not query:
             return Item.objects.none()
