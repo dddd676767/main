@@ -1,15 +1,13 @@
-# chest_loots/service.py
+
 from typing import List, Dict
 from .models import ChestLootItem
 from structures.models import Structure
 
 
 class ChestLootService:
-    """Сервис для работы с лутом сундуков"""
     
     @staticmethod
     def get_loot_for_chest(chest_id: int) -> List[Dict]:
-        """Получить весь лут для сундука"""
         loots = ChestLootItem.objects.filter(chest_id=chest_id).select_related('item')
         
         return [
@@ -26,7 +24,6 @@ class ChestLootService:
     
     @staticmethod
     def get_all_loot_for_structure(structure_id: str) -> List[Dict]:
-        """Получить весь лут из всех сундуков структуры"""
         structure = Structure.objects.filter(structure_id=structure_id).first()
         if not structure:
             return []

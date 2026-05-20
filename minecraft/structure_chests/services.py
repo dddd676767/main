@@ -1,15 +1,15 @@
-# structure_chests/service.py
+
 from typing import List, Dict
 from .models import StructureChest
 from structures.models import Structure
 
 
 class StructureChestService:
-    """Сервис для работы с сундуками структур"""
+
     
     @staticmethod
     def get_chests_for_structure(structure_id: str) -> List[Dict]:
-        """Получить все сундуки для структуры"""
+
         structure = Structure.objects.filter(structure_id=structure_id).first()
         if not structure:
             return []
@@ -28,7 +28,6 @@ class StructureChestService:
     
     @staticmethod
     def get_chest_with_loot(chest_id: int) -> Dict:
-        """Получить сундук со всеми предметами"""
         chest = StructureChest.objects.filter(id=chest_id).select_related('structure').first()
         if not chest:
             return {}

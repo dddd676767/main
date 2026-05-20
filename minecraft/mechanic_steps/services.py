@@ -1,15 +1,15 @@
-# mechanic_steps/service.py
+
 from typing import List, Dict
 from .models import MechanicStep
 from mechanics.models import Mechanic
 
 
 class MechanicStepService:
-    """Сервис для работы с шагами механик"""
+    
     
     @staticmethod
     def get_steps_for_mechanic(mechanic_id: str) -> List[Dict]:
-        """Получить все шаги для механики (в порядке возрастания)"""
+        
         mechanic = Mechanic.objects.filter(mechanic_id=mechanic_id).first()
         if not mechanic:
             return []
@@ -28,7 +28,7 @@ class MechanicStepService:
     
     @staticmethod
     def get_step_by_number(mechanic_id: str, step_number: int) -> Dict:
-        """Получить конкретный шаг механики"""
+       
         mechanic = Mechanic.objects.filter(mechanic_id=mechanic_id).first()
         if not mechanic:
             return {}
