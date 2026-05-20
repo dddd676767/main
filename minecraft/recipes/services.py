@@ -1,71 +1,81 @@
-# recipes/service.py
-from typing import List, Dict, Optional
 from .models import Recipe
+from recipe_ingredients.models import RecipeIngredient
 from items.models import Item
 from versions.models import MinecraftVersion
-
+from django.db import models
 
 class RecipeService:
-    """Сервис для работы с рецептами"""
     
     @staticmethod
-    def get_recipes_by_type(recipe_type: str, version: str = None) -> List[Recipe]:
-        """Получить рецепты по типу"""
-        queryset = Recipe.objects.filter(recipe_type=recipe_type)
-        
-        if version:
-            version_obj = MinecraftVersion.objects.filter(version_number=version).first()
-            if version_obj:
-                queryset = queryset.filter(versions=version_obj)
-        
-        return list(queryset.select_related('result_item').all())
+    def get_all():
+        return Recipe.objects.all()
     
     @staticmethod
-    def get_recipes_for_item(item_id: str) -> List[Dict]:
-        """Получить все рецепты для предмета (где он результат)"""
+    def get_by_id(recipe_id):
+        return Recipe.objects.filter(id=recipe_id).first()
+    
+    @staticmethod
+    def filter_by_type(recipe_type):
+        return Recipe.objects.filter(recipe_type=recipe_type)
+    
+    @staticmethod
+    def get_for_item(item_id):
+        return Recipe.objects.filter(result_item__item_id=item_id)
+    
+    @staticmethod
+    def get_where_ingredient(item_id):
         item = Item.objects.filter(item_id=item_id).first()
         if not item:
-            return []
-        
-        recipes = Recipe.objects.filter(result_item=item).prefetch_related('ingredients')
-        
-        result = []
-        for recipe in recipes:
-            result.append({
-                'id': recipe.id,
-                'result_count': recipe.result_count,
-                'recipe_type': recipe.get_recipe_type_display(),
-                'shape': recipe.shape,
-                'ingredients': [
-                    {
-                        'item': ing.item.name,
-                        'item_id': ing.item.item_id,
-                        'count': ing.count,
-                        'row': ing.position_row,
-                        'col': ing.position_col,
-                    }
-                    for ing in recipe.ingredients.all()
-                ]
-            })
-        
-        return result
+            return Recipe.objects.none()
+        ingredient_recipes = RecipeIngredient.objects.filter(item=item).values_list('recipe_id', flat=True)
+        return Recipe.objects.filter(id__in=ingredient_recipes)
     
     @staticmethod
-    def get_recipe_grid(recipe_id: int, size: int = 3) -> List[List[Optional[Dict]]]:
-        """Получить сетку крафта для отображения"""
-        recipe = Recipe.objects.filter(id=recipe_id).prefetch_related('ingredients').first()
+    def get_recipe_types():
+        return [
+            {"id": "crafting_2x2", "name": "Верстак 2x2"},
+            {"id": "crafting_3x3", "name": "Верстак 3x3"},
+            {"id": "smelting", "name": "Печь"},
+            {"id": "blasting", "name": "Плавильная печь"},
+            {"id": "smoking", "name": "Коптильня"},
+            {"id": "campfire", "name": "Костёр"},
+            {"id": "smithing", "name": "Кузнечный стол"},
+            {"id": "stonecutting", "name": "Камнерез"},
+            {"id": "brewing", "name": "Варочная стойка"},
+        ]
+    
+    @staticmethod
+    def get_recipe_with_ingredients(recipe_id):
+        recipe = Recipe.objects.filter(id=recipe_id).first()
         if not recipe:
-            return []
-        
-        grid = [[None for _ in range(size)] for _ in range(size)]
-        
-        for ingredient in recipe.ingredients.all():
-            if ingredient.position_row is not None and ingredient.position_col is not None:
-                if ingredient.position_row < size and ingredient.position_col < size:
-                    grid[ingredient.position_row][ingredient.position_col] = {
-                        'item': ingredient.item.name,
-                        'item_id': ingredient.item.item_id,
-                        'count': ingredient.count,
-                    }
-        
-        return grid
+            return None
+        return {
+            "id": recipe.id,
+            "result_item": recipe.result_item,
+            "result_count": recipe.result_count,
+            "recipe_type": recipe.recipe_type,
+            "recipe_type_display": recipe.get_recipe_type_display(),
+            "shape": recipe.shape,
+            "group": recipe.group,
+            "ingredients": [
+                {
+                    "item": ing.item,
+                    "count": ing.count,
+                    "row": ing.position_row,
+                    "col": ing.position_col,
+                    "alternatives": ing.alternatives,
+                    "tag": ing.tag
+                }
+                for ing in recipe.ingredients.all()
+            ],
+            "versions": [v.version_number for v in recipe.versions.all()]
+        }
+    
+    @staticmethod
+    def search(query):
+        if not query:
+            return Recipe.objects.none()
+        return Recipe.objects.filter(
+            models.Q(result_item__name__icontains=query) |
+            models.Q(result_item__name_en__icontains=query)
+        )

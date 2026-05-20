@@ -1,15 +1,13 @@
-# loot_drops/service.py
+
 from typing import List, Dict
 from .models import LootDrop
 from mobs.models import Mob
 
 
 class LootDropService:
-    """Сервис для работы с дропом мобов"""
     
     @staticmethod
     def get_drops_for_mob(mob_id: str) -> List[Dict]:
-        """Получить список дропа для моба"""
         mob = Mob.objects.filter(mob_id=mob_id).first()
         if not mob:
             return []
@@ -32,7 +30,6 @@ class LootDropService:
     
     @staticmethod
     def get_drops_grouped_by_rarity(mob_id: str) -> Dict:
-        """Получить дроп моба, сгруппированный по редкости"""
         drops = LootDropService.get_drops_for_mob(mob_id)
         
         return {
@@ -42,7 +39,6 @@ class LootDropService:
     
     @staticmethod
     def get_mobs_dropping_item(item_id: str) -> List[Dict]:
-        """Получить всех мобов, из которых выпадает предмет"""
         drops = LootDrop.objects.filter(item__item_id=item_id).select_related('mob')
         
         return [

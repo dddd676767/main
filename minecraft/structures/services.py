@@ -1,62 +1,36 @@
-# structures/service.py
-from typing import List, Dict, Optional
 from .models import Structure
 from versions.models import MinecraftVersion
-from dimensions.models import Dimension
-
+from django.db import models
 
 class StructureService:
-    """Сервис для работы со структурами"""
     
     @staticmethod
-    def get_structure_by_id(structure_id: str) -> Optional[Structure]:
-        """Получить структуру по ID"""
+    def get_all():
+        return Structure.objects.all()
+    
+    @staticmethod
+    def filter_by_version(version_number):
+        version = MinecraftVersion.objects.filter(version_number=version_number).first()
+        if version:
+            return Structure.objects.filter(versions=version)
+        return Structure.objects.none()
+    
+    @staticmethod
+    def filter_by_rarity(rarity_id):
+        return Structure.objects.filter(rarity=rarity_id)
+    
+    @staticmethod
+    def filter_by_dimension(dimension_id):
+        return Structure.objects.filter(dimensions__id=dimension_id)
+    
+    @staticmethod
+    def search(query):
+        if not query:
+            return Structure.objects.none()
+        return Structure.objects.filter(
+            models.Q(name__icontains=query) | models.Q(name_en__icontains=query)
+        )
+    
+    @staticmethod
+    def get_by_id(structure_id):
         return Structure.objects.filter(structure_id=structure_id).first()
-    
-    @staticmethod
-    def get_structures_by_rarity(rarity: str, version: str = None) -> List[Structure]:
-        """Получить структуры по редкости"""
-        queryset = Structure.objects.filter(rarity=rarity)
-        
-        if version:
-            version_obj = MinecraftVersion.objects.filter(version_number=version).first()
-            if version_obj:
-                queryset = queryset.filter(versions=version_obj)
-        
-        return list(queryset.order_by('name'))
-    
-    @staticmethod
-    def get_structures_by_dimension(dimension_name: str, version: str = None) -> List[Structure]:
-        """Получить структуры в измерении"""
-        dimension = Dimension.objects.filter(name=dimension_name).first()
-        if not dimension:
-            return []
-        
-        queryset = Structure.objects.filter(dimensions=dimension)
-        
-        if version:
-            version_obj = MinecraftVersion.objects.filter(version_number=version).first()
-            if version_obj:
-                queryset = queryset.filter(versions=version_obj)
-        
-        return list(queryset.order_by('name'))
-    
-    @staticmethod
-    def get_structure_with_details(structure_id: str) -> Dict:
-        """Получить структуру со всеми данными"""
-        structure = Structure.objects.filter(structure_id=structure_id).first()
-        if not structure:
-            return {}
-        
-        return {
-            'id': structure.id,
-            'structure_id': structure.structure_id,
-            'name': structure.name,
-            'name_en': structure.name_en,
-            'rarity': structure.get_rarity_display(),
-            'description': structure.description,
-            'images': structure.images,
-            'dimensions': [d.name_ru for d in structure.dimensions.all()],
-            'biomes': [b.name_ru for b in structure.biomes.all()],
-            'versions': [v.version_number for v in structure.versions.all()],
-        }

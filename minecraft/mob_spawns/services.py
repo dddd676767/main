@@ -1,4 +1,4 @@
-# mob_spawns/service.py
+
 from typing import List, Dict, Optional
 from .models import MobSpawnCondition
 from mobs.models import Mob
@@ -7,11 +7,9 @@ from dimensions.models import Dimension
 
 
 class MobSpawnService:
-    """Сервис для работы с условиями спавна мобов"""
     
     @staticmethod
     def get_spawn_conditions_for_mob(mob_id: str) -> List[Dict]:
-        """Получить условия спавна для моба"""
         mob = Mob.objects.filter(mob_id=mob_id).first()
         if not mob:
             return []
@@ -32,7 +30,6 @@ class MobSpawnService:
     
     @staticmethod
     def get_mobs_spawning_in_biome(biome_id: int) -> List[Dict]:
-        """Получить всех мобов, спавнящихся в биоме"""
         conditions = MobSpawnCondition.objects.filter(biome_id=biome_id).select_related('mob', 'dimension')
         
         return [
@@ -47,7 +44,6 @@ class MobSpawnService:
     
     @staticmethod
     def can_spawn_at_level(mob_id: str, y_level: int) -> bool:
-        """Проверить, может ли моб заспавниться на высоте"""
         conditions = MobSpawnCondition.objects.filter(mob__mob_id=mob_id)
         
         for cond in conditions:

@@ -1,15 +1,13 @@
-# recipe_ingredients/service.py
+
 from typing import List, Dict, Set
 from .models import RecipeIngredient
 from items.models import Item
 
 
 class RecipeIngredientService:
-    """Сервис для работы с ингредиентами рецептов"""
     
     @staticmethod
     def get_ingredients_for_recipe(recipe_id: int) -> List[Dict]:
-        """Получить все ингредиенты для рецепта"""
         ingredients = RecipeIngredient.objects.filter(recipe_id=recipe_id).select_related('item')
         
         return [
@@ -27,7 +25,6 @@ class RecipeIngredientService:
     
     @staticmethod
     def get_recipes_using_item(item_id: str) -> List[int]:
-        """Получить ID всех рецептов, где используется предмет"""
         item = Item.objects.filter(item_id=item_id).first()
         if not item:
             return []
@@ -40,7 +37,6 @@ class RecipeIngredientService:
     
     @staticmethod
     def check_ingredients_available(recipe_id: int, available_items: Set[int]) -> bool:
-        """Проверить, доступны ли все ингредиенты для рецепта"""
         ingredients = RecipeIngredient.objects.filter(recipe_id=recipe_id)
         
         for ing in ingredients:
