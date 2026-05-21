@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'biomes',
     'dimensions',
+    'effects',
+    'enchantments',
     'items',
     'versions',
     'chest_loots',
@@ -56,6 +58,7 @@ INSTALLED_APPS = [
     'structure_chests',
     'structures',
     'user_profiles',
+    'importer',
     'rest_framework',
     'config',
 

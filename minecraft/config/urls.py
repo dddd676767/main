@@ -22,6 +22,8 @@ from user_profiles.api.views import UserProfileViewSet
 from favorites.api.views import FavoriteViewSet
 from search_history.api.views import SearchHistoryViewSet
 from completed_tutorials.api.views import CompletedTutorialViewSet
+from effects.api.views import EffectViewSet
+from enchantments.api.views import EnchantmentViewSet
 
 router = DefaultRouter()
 router.register(r'versions', MinecraftVersionViewSet)
@@ -43,6 +45,8 @@ router.register(r'user-profiles', UserProfileViewSet)
 router.register(r'favorites', FavoriteViewSet)
 router.register(r'search-history', SearchHistoryViewSet)
 router.register(r'completed-tutorials', CompletedTutorialViewSet)
+router.register(r'effects', EffectViewSet)
+router.register(r'enchantments', EnchantmentViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
