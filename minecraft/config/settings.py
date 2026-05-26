@@ -61,13 +61,16 @@ INSTALLED_APPS = [
     'importer',
     'rest_framework',
     'config',
+    'corsheaders',
 
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
 IMPORTER_BASE_URL = 'https://idpredmetov.ru'
 IMPORTER_REQUEST_DELAY = 0.5
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
