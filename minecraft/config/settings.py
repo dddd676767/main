@@ -64,6 +64,9 @@ INSTALLED_APPS = [
 
 ]
 
+IMPORTER_BASE_URL = 'https://idpredmetov.ru'
+IMPORTER_REQUEST_DELAY = 0.5
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

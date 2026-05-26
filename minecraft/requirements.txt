@@ -3,4 +3,12 @@ djangorestframework>=3.15
 requests>=2.31
 beautifulsoup4>=4.12
 lxml>=5.0
+<<<<<<< HEAD
 playwright>=1.40
+=======
+tenacity>=8.2
+rich>=13.7
+playwright>=1.40
+pytest>=8.0
+pytest-django>=4.8
+>>>>>>> 846cf762af40ade9e079b9d382b3e18f8ab82502
