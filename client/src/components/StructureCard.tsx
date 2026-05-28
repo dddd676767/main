@@ -1,6 +1,6 @@
-// components/StructureCard.tsx
 import { Structure } from "@/types/structure";
 import { View, Text, StyleSheet } from "react-native";
+import MinecraftIcon from "./MinecraftIcon";
 
 type Props = {
     structure: Structure;
@@ -29,7 +29,7 @@ const StructureCard = ({ structure }: Props) => {
 
     return (
         <View style={styles.card}>
-            <View style={[styles.rarityBar, { backgroundColor: getRarityColor() }]} />
+            <MinecraftIcon name={structure.name} category="structure" size={60} />
             <View style={styles.info}>
                 <Text style={styles.name}>{structure.name}</Text>
                 <Text style={styles.sub}>{structure.name_en}</Text>
@@ -61,15 +61,11 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 4,
         elevation: 3,
-        overflow: "hidden",
-    },
-    rarityBar: {
-        width: 6,
-        marginRight: 12,
-        borderRadius: 3,
+        alignItems: "center",
     },
     info: {
         flex: 1,
+        marginLeft: 12,
     },
     name: {
         fontSize: 16,

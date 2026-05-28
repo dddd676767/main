@@ -1,5 +1,6 @@
 import { Item } from "@/types/item";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import MinecraftIcon from "./MinecraftIcon";
 
 type Props = {
     item: Item;
@@ -8,13 +9,7 @@ type Props = {
 const ItemCard = ({ item }: Props) => {
     return (
         <View style={styles.card}>
-            {item.icon_path ? (
-                <Image source={{ uri: item.icon_path }} style={styles.icon} />
-            ) : (
-                <View style={styles.placeholderIcon}>
-                    <Text style={styles.placeholderText}>кирпич</Text>
-                </View>
-            )}
+            <MinecraftIcon name={item.name} category={item.category} size={60} />
             <View style={styles.info}>
                 <Text style={styles.name}>{item.name}</Text>
                 <Text style={styles.category}>
@@ -24,7 +19,7 @@ const ItemCard = ({ item }: Props) => {
                     {item.description || "Нет описания"}
                 </Text>
                 <Text style={styles.versions}>
-                     Версии: {item.versions.join(", ")}
+                    Версии: {item.versions.join(", ")}
                 </Text>
             </View>
         </View>
@@ -45,28 +40,11 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 4,
         elevation: 3,
-    },
-    icon: {
-        width: 60,
-        height: 60,
-        marginRight: 12,
-        borderRadius: 12,
-        backgroundColor: "#1e1e1e",
-    },
-    placeholderIcon: {
-        width: 60,
-        height: 60,
-        marginRight: 12,
-        borderRadius: 12,
-        backgroundColor: "#3a3a3a",
-        justifyContent: "center",
         alignItems: "center",
-    },
-    placeholderText: {
-        fontSize: 28,
     },
     info: {
         flex: 1,
+        marginLeft: 12,
     },
     name: {
         fontSize: 16,

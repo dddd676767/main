@@ -1,6 +1,6 @@
-// components/MobCard.tsx
 import { Mob } from "@/types/mob";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import MinecraftIcon from "./MinecraftIcon";
 
 type Props = {
     mob: Mob;
@@ -29,13 +29,7 @@ const MobCard = ({ mob }: Props) => {
 
     return (
         <View style={styles.card}>
-            {mob.icon_path ? (
-                <Image source={{ uri: mob.icon_path }} style={styles.icon} />
-            ) : (
-                <View style={styles.placeholderIcon}>
-                    <Text style={styles.placeholderText}>👹</Text>
-                </View>
-            )}
+            <MinecraftIcon name={mob.name} category="mob" size={60} />
             <View style={styles.info}>
                 <Text style={styles.name}>{mob.name}</Text>
                 <Text style={styles.category}>
@@ -72,28 +66,11 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 4,
         elevation: 3,
-    },
-    icon: {
-        width: 60,
-        height: 60,
-        marginRight: 12,
-        borderRadius: 12,
-        backgroundColor: "#1e1e1e",
-    },
-    placeholderIcon: {
-        width: 60,
-        height: 60,
-        marginRight: 12,
-        borderRadius: 12,
-        backgroundColor: "#3a3a3a",
-        justifyContent: "center",
         alignItems: "center",
-    },
-    placeholderText: {
-        fontSize: 32,
     },
     info: {
         flex: 1,
+        marginLeft: 12,
     },
     name: {
         fontSize: 16,
