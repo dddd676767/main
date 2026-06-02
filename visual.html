@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Minecraft Wiki • Мобильный гид</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
+            padding: 16px;
+        }
+
+        /* Корпус мобильного приложения */
+        .phone-frame {
+            max-width: 400px;
+            width: 100%;
+            background: #0d1117; /* Глубокий тёмный, почти как bedrock */
+            border-radius: 48px;
+            overflow: hidden;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7), inset 0 0 0 2px #2d2d2d;
+            position: relative;
+            aspect-ratio: 9 / 19;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Фон приложения (текстура травы/камня) */
+        .app-bg {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpyiCM2rTuyksH4J2n16YHJOuktur6N4mbAw&s');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border-radius: 44px;
+            overflow: hidden;
+        }
+
+        .app-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(2px);
+            z-index: 0;
+        }
+
+        /* Контент поверх фона */
+        .content {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 16px 12px;
+            color: white;
+        }
+
+        /* Шапка */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .creeper-icon {
+            background: #3b3b3b;
+            width: 40px;
+            height: 40px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        .title {
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: -0.3px;
+            text-shadow: 0 4px 8px black;
+        }
+
+        .title span {
+            color: #a0ff6b;
+        }
+
+        .search-btn {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: 0.2s;
+        }
+
+        /* Сетка разделов */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .category-card {
+            background: rgba(30, 30, 30, 0.65);
+            backdrop-filter: blur(14px);
+            border-radius: 22px;
+            padding: 14px 6px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.6);
+            transition: all 0.2s ease;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            cursor: default;
+        }
+
+        .category-card.active {
+            background: rgba(90, 150, 70, 0.7);
+            border-color: #a0ff6b;
+            box-shadow: 0 0 20px rgba(120, 255, 80, 0.5);
+            transform: scale(1.02);
+        }
+
+        .cat-emoji {
+            font-size: 26px;
+            filter: drop-shadow(0 4px 4px black);
+        }
+
+        /* Заголовок секции */
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 12px;
+            padding: 0 4px;
+        }
+
+        .section-title h2 {
+            font-size: 18px;
+            font-weight: 700;
+            text-shadow: 0 2px 6px black;
+        }
+
+        .section-title a {
+            color: #b3ff8b;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            opacity: 0.9;
+        }
+
+        /* Список карточек (горизонтальный скролл) */
+        .cards-scroll {
+            display: flex;
+            gap: 14px;
+            overflow-x: auto;
+            padding-bottom: 6px;
+            scrollbar-width: thin;
+            scrollbar-color: #5a5a5a transparent;
+        }
+
+        .cards-scroll::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .cards-scroll::-webkit-scrollbar-thumb {
+            background: #7e7e7e;
+            border-radius: 10px;
+        }
+
+        /* Карточка предмета/моба */
+        .item-card {
+            min-width: 130px;
+            max-width: 150px;
+            background: rgba(20, 25, 20, 0.7);
+            backdrop-filter: blur(16px);
+            border-radius: 24px;
+            padding: 12px 8px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 12px 18px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s;
+            flex-shrink: 0;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Блок с изображением (используем указанную ссылку) */
+        .image-box {
+            width: 70px;
+            height: 70px;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpyiCM2rTuyksH4J2n16YHJOuktur6N4mbAw&s');
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.7);
+            background-color: #2d2d2d; /* fallback */
+        }
+
+        .item-name {
+            font-weight: 700;
+            font-size: 14px;
+            color: white;
+            text-shadow: 0 2px 4px black;
+            margin-bottom: 4px;
+        }
+
+        .item-meta {
+            font-size: 11px;
+            color: #c0c0c0;
+            background: rgba(0,0,0,0.5);
+            padding: 2px 10px;
+            border-radius: 20px;
+        }
+
+        /* Нижняя навигация */
+        .bottom-nav {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 10px 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+            margin-top: 14px;
+        }
+
+        .nav-item {
+            color: #aaa;
+            font-size: 22px;
+            text-align: center;
+            padding: 6px 14px;
+            border-radius: 20px;
+            transition: 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-weight: 500;
+            font-size: 12px;
+            gap: 2px;
+        }
+
+        .nav-item.active {
+            color: #a0ff6b;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-item i {
+            font-size: 22px;
+            font-style: normal;
+        }
+
+        /* утилиты */
+        .mt-1 { margin-top: 6px; }
+    </style>
+</head>
+<body>
+    <div class="phone-frame">
+        <div class="app-bg">
+            <div class="content">
+                
+                <!-- Header -->
+                <div class="header">
+                    <div class="logo-area">
+                        <div class="creeper-icon">
+                            🍃
+                        </div>
+                        <div class="title">
+                            Minecraft <span>Wiki</span>
+                        </div>
+                    </div>
+                    <div class="search-btn">
+                        🔍
+                    </div>
+                </div>
+
+                <!-- Категории: всё, блоки, мобы, структуры, биомы, предметы -->
+                <div class="categories-grid">
+                    <div class="category-card active">
+                        <span class="cat-emoji">📦</span>
+                        <span>Всё</span>
+                    </div>
+                    <div class="category-card">
+                        <span class="cat-emoji">🧱</span>
+                        <span>Блоки</span>
+                    </div>
+                    <div class="category-card">
+                        <span class="cat-emoji">🐷</span>
+                        <span>Мобы</span>
+                    </div>
+                    <div class="category-card">
+                        <span class="cat-emoji">🏛️</span>
+                        <span>Структуры</span>
+                    </div>
+                    <div class="category-card">
+                        <span class="cat-emoji">🌲</span>
+                        <span>Биомы</span>
+                    </div>
+                    <div class="category-card">
+                        <span class="cat-emoji">⚔️</span>
+                        <span>Предметы</span>
+                    </div>
+                </div>
+
+                <!-- Секция: Популярное (пример карточек с картинкой по ссылке) -->
+                <div class="section-title">
+                    <h2>🔥 Популярное</h2>
+                    <a href="#">Все →</a>
+                </div>
+
+                <!-- Горизонтальные карточки с изображением из ссылки -->
+                <div class="cards-scroll">
+                    <!-- Карточка 1 -->
+                    <div class="item-card">
+                        <div class="image-box"></div>
+                        <div class="item-name">Крипер</div>
+                        <div class="item-meta">Моб</div>
+                    </div>
+                    <!-- Карточка 2 -->
+                    <div class="item-card">
+                        <div class="image-box"></div>
+                        <div class="item-name">Алмазный блок</div>
+                        <div class="item-meta">Блок</div>
+                    </div>
+                    <!-- Карточка 3 -->
+                    <div class="item-card">
+                        <div class="image-box"></div>
+                        <div class="item-name">Деревня</div>
+                        <div class="item-meta">Структура</div>
+                    </div>
+                    <!-- Карточка 4 -->
+                    <div class="item-card">
+                        <div class="image-box"></div>
+                        <div class="item-name">Тайга</div>
+                        <div class="item-meta">Биом</div>
+                    </div>
+                    <!-- Карточка 5 -->
+                    <div class="item-card">
+                        <div class="image-box"></div>
+                        <div class="item-name">Меч</div>
+                        <div class="item-meta">Предмет</div>
+                    </div>
+                </div>
+
+                <!-- Дополнительный ряд: Недавнее -->
+                <div class="section-title mt-1">
+                    <h2>🕒 Недавнее</h2>
+                    <a href="#">Все →</a>
+                </div>
+                <div class="cards-scroll">
+                    <div class="item-card">
+                        <div class="image-box"></div>
+                        <div class="item-name">Эндермен</div>
+                        <div class="item-meta">Моб</div>
+                    </div>
+                    <div class="item-card">
+                        <div class="image-box"></div>
+                        <div class="item-name">Незерит</div>
+                        <div class="item-meta">Предмет</div>
+                    </div>
+                    <div class="item-card">
+                        <div class="image-box"></div>
+                        <div class="item-name">Крепость</div>
+                        <div class="item-meta">Структура</div>
+                    </div>
+                </div>
+
+                <!-- Нижнее меню -->
+                <div class="bottom-nav">
+                    <div class="nav-item active">
+                        <i>🏠</i> Главная
+                    </div>
+                    <div class="nav-item">
+                        <i>🧭</i> Обзор
+                    </div>
+                    <div class="nav-item">
+                        <i>⭐</i> Избранное
+                    </div>
+                    <div class="nav-item">
+                        <i>⚙️</i> Ещё
+                    </div>
+                </div>
+
+            </div> <!-- end content -->
+        </div> <!-- end app-bg -->
+    </div> <!-- end phone-frame -->
+</body>
+</html>

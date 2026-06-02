@@ -9,11 +9,11 @@ type Props = {
 };
 
 const NavTabs = ({ activeTab, onTabChange }: Props) => {
-    const tabs: { key: TabType; label: string; icon: string }[] = [
-        { key: "items", label: "Предметы", icon: "📦" },
-        { key: "mobs", label: "Мобы", icon: "👹" },
-        { key: "biomes", label: "Биомы", icon: "🌿" },
-        { key: "structures", label: "Структуры", icon: "🏛️" },
+    const tabs: { key: TabType; label: string }[] = [
+        { key: "items", label: "Предметы" },
+        { key: "mobs", label: "Мобы" },
+        { key: "biomes", label: "Биомы" },
+        { key: "structures", label: "Структуры" },
     ];
 
     return (
@@ -25,7 +25,7 @@ const NavTabs = ({ activeTab, onTabChange }: Props) => {
                     onPress={() => onTabChange(tab.key)}
                 >
                     <Text style={[styles.tabText, activeTab === tab.key && styles.activeTabText]}>
-                        {tab.icon} {tab.label}
+                        {tab.label}
                     </Text>
                 </TouchableOpacity>
             ))}

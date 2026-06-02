@@ -1,17 +1,22 @@
 import { Mob } from "@/types/mob";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
+import { Image } from "expo-image";
 import MinecraftIcon from "./MinecraftIcon";
+import { ICONS } from "@/constants/minecraft-icons";
 
 type Props = {
     mob: Mob;
+    isFavorite?: boolean;
+    onToggleFavorite?: () => void;
 };
 
-const MobCard = ({ mob }: Props) => {
+const MobCard = ({ mob, isFavorite = false, onToggleFavorite }: Props) => {
     const getBehaviorColor = () => {
         switch (mob.behavior) {
             case "hostile": return "#ff6b6b";
             case "neutral": return "#ffd93d";
             case "passive": return "#6bcb77";
+            case "tameable": return "#6bcb77";
             case "boss": return "#c084fc";
             default: return "#aaa";
         }
@@ -22,6 +27,7 @@ const MobCard = ({ mob }: Props) => {
             case "hostile": return "Враждебный";
             case "neutral": return "Нейтральный";
             case "passive": return "Пассивный";
+            case "tameable": return "Приручаемый";
             case "boss": return "Босс";
             default: return mob.behavior;
         }
@@ -29,23 +35,38 @@ const MobCard = ({ mob }: Props) => {
 
     return (
         <View style={styles.card}>
-            <MinecraftIcon name={mob.name} category="mob" size={60} />
+            <MinecraftIcon
+                name={mob.name}
+                category={mob.category ?? "mob"}
+                iconUrl={mob.icon_path}
+                fallbackId={mob.mob_id}
+                size={60}
+            />
             <View style={styles.info}>
-                <Text style={styles.name}>{mob.name}</Text>
+                <View style={styles.headerRow}>
+                    <Text style={styles.name} numberOfLines={1}>{mob.name}</Text>
+                    <Pressable onPress={onToggleFavorite} hitSlop={8}>
+                        <Image
+                            source={{ uri: isFavorite ? ICONS.favoritesOn : ICONS.favoritesOff }}
+                            style={styles.starIcon}
+                            contentFit="contain"
+                        />
+                    </Pressable>
+                </View>
                 <Text style={styles.category}>
-                    {mob.category} • {mob.health} ❤️ • {mob.damage} ⚔️
+                    {mob.category} • {mob.health} HP • {mob.damage} DMG
                 </Text>
                 <View style={styles.behaviorContainer}>
                     <Text style={[styles.behavior, { backgroundColor: getBehaviorColor() }]}>
                         {getBehaviorText()}
                     </Text>
-                    <Text style={styles.experience}>Опыт: {mob.experience}</Text>
+                    <Text style={styles.experience}>XP: {mob.experience}</Text>
                 </View>
                 <Text style={styles.desc} numberOfLines={2}>
                     {mob.description || "Нет описания"}
                 </Text>
                 <Text style={styles.versions}>
-                    📌 Версии: {mob.versions?.join(", ") || "1.21"}
+                    Версии: {mob.versions?.join(", ") || "1.21"}
                 </Text>
             </View>
         </View>
@@ -72,10 +93,21 @@ const styles = StyleSheet.create({
         flex: 1,
         marginLeft: 12,
     },
+    headerRow: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
     name: {
         fontSize: 16,
         fontWeight: "bold",
         color: "#c084fc",
+        flex: 1,
+    },
+    starIcon: {
+        width: 20,
+        height: 20,
+        marginLeft: 8,
     },
     category: {
         fontSize: 12,

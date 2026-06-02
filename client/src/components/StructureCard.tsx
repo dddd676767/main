@@ -1,12 +1,16 @@
 import { Structure } from "@/types/structure";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
+import { Image } from "expo-image";
 import MinecraftIcon from "./MinecraftIcon";
+import { ICONS } from "@/constants/minecraft-icons";
 
 type Props = {
     structure: Structure;
+    isFavorite?: boolean;
+    onToggleFavorite?: () => void;
 };
 
-const StructureCard = ({ structure }: Props) => {
+const StructureCard = ({ structure, isFavorite = false, onToggleFavorite }: Props) => {
     const getRarityColor = () => {
         switch (structure.rarity) {
             case "common": return "#6b6b6b";
@@ -29,9 +33,23 @@ const StructureCard = ({ structure }: Props) => {
 
     return (
         <View style={styles.card}>
-            <MinecraftIcon name={structure.name} category="structure" size={60} />
+            <MinecraftIcon
+                name={structure.name}
+                category="structure"
+                fallbackId={structure.structure_id}
+                size={60}
+            />
             <View style={styles.info}>
-                <Text style={styles.name}>{structure.name}</Text>
+                <View style={styles.headerRow}>
+                    <Text style={styles.name} numberOfLines={1}>{structure.name}</Text>
+                    <Pressable onPress={onToggleFavorite} hitSlop={8}>
+                        <Image
+                            source={{ uri: isFavorite ? ICONS.favoritesOn : ICONS.favoritesOff }}
+                            style={styles.starIcon}
+                            contentFit="contain"
+                        />
+                    </Pressable>
+                </View>
                 <Text style={styles.sub}>{structure.name_en}</Text>
                 <View style={styles.badgeContainer}>
                     <Text style={[styles.rarityBadge, { backgroundColor: getRarityColor() }]}>
@@ -67,10 +85,21 @@ const styles = StyleSheet.create({
         flex: 1,
         marginLeft: 12,
     },
+    headerRow: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
     name: {
         fontSize: 16,
         fontWeight: "bold",
         color: "#f5a623",
+        flex: 1,
+    },
+    starIcon: {
+        width: 20,
+        height: 20,
+        marginLeft: 8,
     },
     sub: {
         fontSize: 12,
