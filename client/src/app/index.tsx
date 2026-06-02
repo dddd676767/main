@@ -79,10 +79,11 @@ export default function HomeScreen() {
         if (tab === "settings") router.push("/settings");
     };
 
-    const displayItems = getDisplayedItems();
-    const displayMobs = getDisplayedMobs();
-    const displayBiomes = getDisplayedBiomes();
-    const displayStructures = getDisplayedStructures();
+    const displayItems = getDisplayedItems;
+    const displayMobs = getDisplayedMobs;
+    const displayBiomes = getDisplayedBiomes;
+    const displayStructures = getDisplayedStructures;
+
 
     // In "all" mode, show top 10 per category as horizontal sections
     const isAll = activeCategory === "all" && !searchResults;

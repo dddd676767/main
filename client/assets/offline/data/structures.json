@@ -1,0 +1,506 @@
+[
+  {
+    "id": 1,
+    "structure_id": "village_plains",
+    "name": "Деревня (равнины)",
+    "name_en": "Village (Plains)",
+    "rarity": "common",
+    "description": "1",
+    "images": "\"images/village_plains.jpg\""
+  },
+  {
+    "id": 2,
+    "structure_id": "village_taiga",
+    "name": "Деревня (тайга)",
+    "name_en": "village(taiga)",
+    "rarity": "common",
+    "description": "1",
+    "images": "\"images/\""
+  },
+  {
+    "id": 3,
+    "structure_id": "village_snowy",
+    "name": "Деревня(заснеженная)",
+    "name_en": "Village(snowy)",
+    "rarity": "common",
+    "description": "1",
+    "images": "\"images/\""
+  },
+  {
+    "id": 4,
+    "structure_id": "mansion",
+    "name": "Лесной особняк",
+    "name_en": "Woodland Mansion",
+    "rarity": "rare",
+    "description": "1",
+    "images": "\"images/\""
+  },
+  {
+    "id": 5,
+    "structure_id": "igloo",
+    "name": "Иглу",
+    "name_en": "igloo",
+    "rarity": "uncommon",
+    "description": "1",
+    "images": "\"images/\""
+  },
+  {
+    "id": 6,
+    "structure_id": "desert_pyramid",
+    "name": "Храм в пустыне",
+    "name_en": "Desert Pyramid",
+    "rarity": "uncommon",
+    "description": "1",
+    "images": "\"images/\""
+  },
+  {
+    "id": 7,
+    "structure_id": "village_savanna",
+    "name": "Деревня (саванна)",
+    "name_en": "Village (Savanna)",
+    "rarity": "common",
+    "description": "1",
+    "images": "\"images/\""
+  },
+  {
+    "id": 8,
+    "structure_id": "swamp_hut",
+    "name": "Хижина ведьмы",
+    "name_en": "Swamp Hut",
+    "rarity": "uncommon",
+    "description": "q",
+    "images": "\"images/\""
+  },
+  {
+    "id": 9,
+    "structure_id": "monument",
+    "name": "Океанский памятник",
+    "name_en": "Ocean Monument",
+    "rarity": "rare",
+    "description": "1",
+    "images": "\"i\""
+  },
+  {
+    "id": 10,
+    "structure_id": "mineshaft",
+    "name": "Заброшенная шахта",
+    "name_en": "Mineshaft",
+    "rarity": "common",
+    "description": "1",
+    "images": "\"i\""
+  },
+  {
+    "id": 11,
+    "structure_id": "stronghold",
+    "name": "Крепость",
+    "name_en": "Stronghold",
+    "rarity": "uncommon",
+    "description": "1",
+    "images": "\"i\""
+  },
+  {
+    "id": 12,
+    "structure_id": "fortress",
+    "name": "Незер-крепость",
+    "name_en": "Nether Fortress",
+    "rarity": "uncommon",
+    "description": "1",
+    "images": "\"i\""
+  },
+  {
+    "id": 13,
+    "structure_id": "end_city",
+    "name": "Энд-город",
+    "name_en": "End City",
+    "rarity": "uncommon",
+    "description": "1",
+    "images": "\"i\""
+  },
+  {
+    "id": 14,
+    "structure_id": "end_ship",
+    "name": "Энд-корабль",
+    "name_en": "End Ship",
+    "rarity": "rare",
+    "description": "1",
+    "images": "\"i\""
+  },
+  {
+    "id": 15,
+    "structure_id": "minecraft:cats_spawn_as_block",
+    "name": "Cats Spawn As Block",
+    "name_en": "Cats Spawn As Block",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 16,
+    "structure_id": "minecraft:cats_spawn_in",
+    "name": "Cats Spawn In",
+    "name_en": "Cats Spawn In",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 17,
+    "structure_id": "minecraft:dolphin_located",
+    "name": "Dolphin Located",
+    "name_en": "Dolphin Located",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 18,
+    "structure_id": "minecraft:eye_of_ender_located",
+    "name": "Eye Of Ender Located",
+    "name_en": "Eye Of Ender Located",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 19,
+    "structure_id": "minecraft:mineshaft",
+    "name": "Mineshaft",
+    "name_en": "Mineshaft",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 20,
+    "structure_id": "minecraft:ocean_ruin",
+    "name": "Ocean Ruin",
+    "name_en": "Ocean Ruin",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 21,
+    "structure_id": "minecraft:on_ocean_explorer_maps",
+    "name": "On Ocean Explorer Maps",
+    "name_en": "On Ocean Explorer Maps",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 22,
+    "structure_id": "minecraft:on_treasure_maps",
+    "name": "On Treasure Maps",
+    "name_en": "On Treasure Maps",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 23,
+    "structure_id": "minecraft:on_woodland_explorer_maps",
+    "name": "On Woodland Explorer Maps",
+    "name_en": "On Woodland Explorer Maps",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 24,
+    "structure_id": "minecraft:ruined_portal",
+    "name": "Ruined Portal",
+    "name_en": "Ruined Portal",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 25,
+    "structure_id": "minecraft:shipwreck",
+    "name": "Shipwreck",
+    "name_en": "Shipwreck",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 26,
+    "structure_id": "minecraft:village",
+    "name": "Village",
+    "name_en": "Village",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 27,
+    "structure_id": "minecraft:ancient_city",
+    "name": "Ancient City",
+    "name_en": "Ancient City",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 28,
+    "structure_id": "minecraft:bastion_remnant",
+    "name": "Bastion Remnant",
+    "name_en": "Bastion Remnant",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 29,
+    "structure_id": "minecraft:buried_treasure",
+    "name": "Buried Treasure",
+    "name_en": "Buried Treasure",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 30,
+    "structure_id": "minecraft:desert_pyramid",
+    "name": "Desert Pyramid",
+    "name_en": "Desert Pyramid",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 31,
+    "structure_id": "minecraft:end_city",
+    "name": "End City",
+    "name_en": "End City",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 32,
+    "structure_id": "minecraft:fortress",
+    "name": "Fortress",
+    "name_en": "Fortress",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 33,
+    "structure_id": "minecraft:igloo",
+    "name": "Igloo",
+    "name_en": "Igloo",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 34,
+    "structure_id": "minecraft:jungle_pyramid",
+    "name": "Jungle Pyramid",
+    "name_en": "Jungle Pyramid",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 35,
+    "structure_id": "minecraft:mansion",
+    "name": "Mansion",
+    "name_en": "Mansion",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 36,
+    "structure_id": "minecraft:mineshaft_mesa",
+    "name": "Mineshaft Mesa",
+    "name_en": "Mineshaft Mesa",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 37,
+    "structure_id": "minecraft:monument",
+    "name": "Monument",
+    "name_en": "Monument",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 38,
+    "structure_id": "minecraft:nether_fossil",
+    "name": "Nether Fossil",
+    "name_en": "Nether Fossil",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 39,
+    "structure_id": "minecraft:ocean_ruin_cold",
+    "name": "Ocean Ruin Cold",
+    "name_en": "Ocean Ruin Cold",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 40,
+    "structure_id": "minecraft:ocean_ruin_warm",
+    "name": "Ocean Ruin Warm",
+    "name_en": "Ocean Ruin Warm",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 41,
+    "structure_id": "minecraft:pillager_outpost",
+    "name": "Pillager Outpost",
+    "name_en": "Pillager Outpost",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 42,
+    "structure_id": "minecraft:ruined_portal_desert",
+    "name": "Ruined Portal Desert",
+    "name_en": "Ruined Portal Desert",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 43,
+    "structure_id": "minecraft:ruined_portal_jungle",
+    "name": "Ruined Portal Jungle",
+    "name_en": "Ruined Portal Jungle",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 44,
+    "structure_id": "minecraft:ruined_portal_mountain",
+    "name": "Ruined Portal Mountain",
+    "name_en": "Ruined Portal Mountain",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 45,
+    "structure_id": "minecraft:ruined_portal_nether",
+    "name": "Ruined Portal Nether",
+    "name_en": "Ruined Portal Nether",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 46,
+    "structure_id": "minecraft:ruined_portal_ocean",
+    "name": "Ruined Portal Ocean",
+    "name_en": "Ruined Portal Ocean",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 47,
+    "structure_id": "minecraft:ruined_portal_swamp",
+    "name": "Ruined Portal Swamp",
+    "name_en": "Ruined Portal Swamp",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 48,
+    "structure_id": "minecraft:shipwreck_beached",
+    "name": "Shipwreck Beached",
+    "name_en": "Shipwreck Beached",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 49,
+    "structure_id": "minecraft:stronghold",
+    "name": "Stronghold",
+    "name_en": "Stronghold",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 50,
+    "structure_id": "minecraft:swamp_hut",
+    "name": "Swamp Hut",
+    "name_en": "Swamp Hut",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 51,
+    "structure_id": "minecraft:trail_ruins",
+    "name": "Trail Ruins",
+    "name_en": "Trail Ruins",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 52,
+    "structure_id": "minecraft:village_desert",
+    "name": "Village Desert",
+    "name_en": "Village Desert",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 53,
+    "structure_id": "minecraft:village_plains",
+    "name": "Village Plains",
+    "name_en": "Village Plains",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 54,
+    "structure_id": "minecraft:village_savanna",
+    "name": "Village Savanna",
+    "name_en": "Village Savanna",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 55,
+    "structure_id": "minecraft:village_snowy",
+    "name": "Village Snowy",
+    "name_en": "Village Snowy",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  },
+  {
+    "id": 56,
+    "structure_id": "minecraft:village_taiga",
+    "name": "Village Taiga",
+    "name_en": "Village Taiga",
+    "rarity": "common",
+    "description": "",
+    "images": "[]"
+  }
+]

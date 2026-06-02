@@ -1,0 +1,570 @@
+[
+  {
+    "id": 3,
+    "name": "plains",
+    "name_ru": "Равнины",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 3
+  },
+  {
+    "id": 4,
+    "name": "desert",
+    "name_ru": "Пустыня",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 3
+  },
+  {
+    "id": 5,
+    "name": "nether_wastes",
+    "name_ru": "Адские пустоши",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 4
+  },
+  {
+    "id": 6,
+    "name": "crimson_forest",
+    "name_ru": "Багровый лес",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 4
+  },
+  {
+    "id": 7,
+    "name": "warped_forest",
+    "name_ru": "Искаженный лес",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 4
+  },
+  {
+    "id": 8,
+    "name": "Taiga",
+    "name_ru": "Тайга",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 9,
+    "name": "Dark Forest",
+    "name_ru": "Тёмный лес",
+    "temperature": 0.5,
+    "description": "1",
+    "dimension_id": 6
+  },
+  {
+    "id": 10,
+    "name": "Birch Forest",
+    "name_ru": "Березняк",
+    "temperature": 0.5,
+    "description": "1",
+    "dimension_id": 6
+  },
+  {
+    "id": 11,
+    "name": "Forest",
+    "name_ru": "Лес",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 12,
+    "name": "Pale Garden",
+    "name_ru": "Бледный лес",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 3
+  },
+  {
+    "id": 13,
+    "name": "Snowy Taiga",
+    "name_ru": "Заснеженная тайга",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 14,
+    "name": "Meadow",
+    "name_ru": "Луг",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 15,
+    "name": "Cherry Grove",
+    "name_ru": "Вишнёвая роща",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 16,
+    "name": "Savanna",
+    "name_ru": "Саванна",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 17,
+    "name": "Jungle",
+    "name_ru": "Джунгли",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 18,
+    "name": "Bamboo Jungle",
+    "name_ru": "Бамбуковые заросли",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 19,
+    "name": "Swamp",
+    "name_ru": "Болото",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 20,
+    "name": "Mangrove Swamp",
+    "name_ru": "Мангровое болото",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 21,
+    "name": "Mushroom Fields",
+    "name_ru": "Грибные поля",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 22,
+    "name": "Snowy Plains",
+    "name_ru": "Заснеженные равнины",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 23,
+    "name": "Ice Spikes",
+    "name_ru": "Ледяные пики",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 24,
+    "name": "Ocean",
+    "name_ru": "Океан",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 25,
+    "name": "Deep Ocean",
+    "name_ru": "Глубокий океан",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 26,
+    "name": "The End",
+    "name_ru": "Энд",
+    "temperature": 0.5,
+    "description": "1",
+    "dimension_id": 8
+  },
+  {
+    "id": 27,
+    "name": "end_highlands",
+    "name_ru": "Нагорья Края",
+    "temperature": 0.5,
+    "description": "1",
+    "dimension_id": 5
+  },
+  {
+    "id": 28,
+    "name": "Plains",
+    "name_ru": "Равнины",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 29,
+    "name": "Desert",
+    "name_ru": "Пустыня",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 30,
+    "name": "Badlands",
+    "name_ru": "Бесплодные земли",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 31,
+    "name": "Nether Wastes",
+    "name_ru": "Пустоши Незера",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 7
+  },
+  {
+    "id": 32,
+    "name": "Crimson Forest",
+    "name_ru": "Багровый лес",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 7
+  },
+  {
+    "id": 33,
+    "name": "Warped Forest",
+    "name_ru": "Искажённый лес",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 7
+  },
+  {
+    "id": 34,
+    "name": "Soul Sand Valley",
+    "name_ru": "Долина песка душ",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 7
+  },
+  {
+    "id": 35,
+    "name": "Basalt Deltas",
+    "name_ru": "Базальтовые дельты",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 7
+  },
+  {
+    "id": 36,
+    "name": "The Void",
+    "name_ru": "Пустота",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 8
+  },
+  {
+    "id": 37,
+    "name": "Sunflower Plains",
+    "name_ru": "Подсолнуховые поля",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 38,
+    "name": "Flower Forest",
+    "name_ru": "Цветочный лес",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 39,
+    "name": "Old Growth Birch Forest",
+    "name_ru": "Реликтовый березняк",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 40,
+    "name": "Old Growth Pine Taiga",
+    "name_ru": "Реликтовая сосновая тайга",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 41,
+    "name": "Old Growth Spruce Taiga",
+    "name_ru": "Реликтовая еловая тайга",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 42,
+    "name": "Savanna Plateau",
+    "name_ru": "Саванна (плато)",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 43,
+    "name": "Windswept Hills",
+    "name_ru": "Выветренные холмы",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 44,
+    "name": "Windswept Gravelly Hills",
+    "name_ru": "Выветренные гравийные холмы",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 45,
+    "name": "Windswept Forest",
+    "name_ru": "Выветренный лес",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 46,
+    "name": "Windswept Savanna",
+    "name_ru": "Выветренная саванна",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 47,
+    "name": "Sparse Jungle",
+    "name_ru": "Редкие джунгли",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 48,
+    "name": "Eroded Badlands",
+    "name_ru": "Выветренные бесплодные земли",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 49,
+    "name": "Wooded Badlands",
+    "name_ru": "Лесистые бесплодные земли",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 50,
+    "name": "Grove",
+    "name_ru": "Роща",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 51,
+    "name": "Snowy Slopes",
+    "name_ru": "Заснеженные склоны",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 52,
+    "name": "Frozen Peaks",
+    "name_ru": "Замёрзшие вершины",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 53,
+    "name": "Jagged Peaks",
+    "name_ru": "Зубчатые вершины",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 54,
+    "name": "Stony Peaks",
+    "name_ru": "Каменные вершины",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 55,
+    "name": "River",
+    "name_ru": "Река",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 56,
+    "name": "Frozen River",
+    "name_ru": "Замёрзшая река",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 57,
+    "name": "Beach",
+    "name_ru": "Пляж",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 58,
+    "name": "Snowy Beach",
+    "name_ru": "Заснеженный пляж",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 59,
+    "name": "Stony Shore",
+    "name_ru": "Каменистый берег",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 60,
+    "name": "Warm Ocean",
+    "name_ru": "Тёплый океан",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 61,
+    "name": "Lukewarm Ocean",
+    "name_ru": "Тепловатый океан",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 62,
+    "name": "Deep Lukewarm Ocean",
+    "name_ru": "Глубокий тепловатый океан",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 63,
+    "name": "Cold Ocean",
+    "name_ru": "Холодный океан",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 64,
+    "name": "Deep Cold Ocean",
+    "name_ru": "Глубокий холодный океан",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 65,
+    "name": "Frozen Ocean",
+    "name_ru": "Замёрзший океан",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 66,
+    "name": "Deep Frozen Ocean",
+    "name_ru": "Глубокий замёрзший океан",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 67,
+    "name": "Dripstone Caves",
+    "name_ru": "Карстовые пещеры",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 68,
+    "name": "Lush Caves",
+    "name_ru": "Заросшие пещеры",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 69,
+    "name": "Deep Dark",
+    "name_ru": "Тёмные подземелья",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 6
+  },
+  {
+    "id": 70,
+    "name": "End Highlands",
+    "name_ru": "Возвышенности Энда",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 8
+  },
+  {
+    "id": 71,
+    "name": "End Midlands",
+    "name_ru": "Равнины Энда",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 8
+  },
+  {
+    "id": 72,
+    "name": "Small End Islands",
+    "name_ru": "Островки Энда",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 8
+  },
+  {
+    "id": 73,
+    "name": "End Barrens",
+    "name_ru": "Окраины Энда",
+    "temperature": 0.5,
+    "description": "",
+    "dimension_id": 8
+  }
+]
